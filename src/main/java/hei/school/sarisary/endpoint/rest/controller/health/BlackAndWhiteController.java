@@ -35,7 +35,7 @@ public class BlackAndWhiteController {
         return ResponseEntity.ok(response);
     }
 
-    static class ConvertBlackWhite {
+    public static class ConvertBlackWhite {
         public static String convertToBlackAndWhite(byte[] imageBytes, String id) throws IOException {
             ByteArrayInputStream bis = new ByteArrayInputStream(imageBytes);
             BufferedImage image = ImageIO.read(bis);
