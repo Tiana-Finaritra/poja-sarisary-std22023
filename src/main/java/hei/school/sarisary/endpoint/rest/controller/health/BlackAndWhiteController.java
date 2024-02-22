@@ -20,7 +20,7 @@ public class BlackAndWhiteController {
     public ResponseEntity<Void> uploadImage(@PathVariable String id, @RequestParam("file") MultipartFile file) {
         try {
             byte[] imageBytes = file.getBytes();
-            String transformedImageUrl = ConvertBlackWhite.convertToBlackAndWhite(imageBytes, id);
+            ConvertBlackWhite.convertToBlackAndWhite(imageBytes, id);
             return ResponseEntity.ok().build();
         } catch (IOException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
@@ -43,7 +43,7 @@ public class BlackAndWhiteController {
             blackAndWhiteImage.getGraphics().drawImage(image, 0, 0, null);
             ByteArrayOutputStream bos = new ByteArrayOutputStream();
             ImageIO.write(blackAndWhiteImage, "png", bos);
-            byte[] blackAndWhiteImageBytes = bos.toByteArray();
+            bos.toByteArray();
             return "https://transformed.url/" + id;
         }
 
